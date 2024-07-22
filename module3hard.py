@@ -1,5 +1,5 @@
 def calculate_structure_sum(data):
-    def recursive_sum(item):
+    def summa1(item):
         number = 0
 
         if isinstance(item, int):
@@ -8,17 +8,17 @@ def calculate_structure_sum(data):
             number += len(item)
         elif isinstance(item, (list, tuple, set)):
             for sub_item in item:
-                number += recursive_sum(sub_item)
+                number += summa1(sub_item)
         elif isinstance(item, dict):
             for key, value in item.items():
-                number += recursive_sum(key)
-                number += recursive_sum(value)
+                number += summa1(key)
+                number += summa1(value)
         elif isinstance(item, bool):
             number += int(item)
 
         return number
 
-    return recursive_sum(data)
+    return summa1(data)
 
 
 data_structure = [
@@ -30,4 +30,4 @@ data_structure = [
 ]
 
 summa = calculate_structure_sum(data_structure)
-print("Подсчёт суммы всех чисел и длин всех строк: ", summa )  # Output should be 99
+print("Подсчёт суммы всех чисел и длин всех строк: ", summa )
